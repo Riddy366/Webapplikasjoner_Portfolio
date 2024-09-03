@@ -10,24 +10,35 @@
     <header>
         <h1>Portfolio Ridwan</h1>
     </header>
-    <section id="prosjekter">
-        <h2>Prosjekter</h2>
-    <article>
-        <h3>Prosjekt 1</h3>
-        <p>prosjekbeskrivelse</p>
-        <button>Gå til app</button>
-    </article>
-    <article>
-        <h3>Prosjekt 2</h3>
-        <p>prosjekbeskrivelse</p>
-        <button>Gå til app</button>
-    </article>
-    <article>
-        <h3>Prosjekt 3</h3>
-        <p>prosjekbeskrivelse</p>
-        <button>Gå til app</button>
-    </article>
-    </section>
     
+    <main class="main-content">
+
+        <section id="prosjekter">
+            <h2>Prosjekter</h2>
+        </section>
+
+        <form action="/post_project" method="POST">
+            
+            <label for="title">Project Title</label>
+            <input id="title" type="text" name="title" placeholder="Project Title" required/>
+
+            <label for="description">Project Description</label>
+            <input id="description" type="text" name="description" placeholder="Project Description" required/>
+
+            <label for="start_date">Start Date</label>
+            <input id="start_date" type="date" name="start_date" required/>
+
+            <label for="end_date">End Date</label>
+            <input id="end_date" type="date" name="end_date" required/>
+
+            <label for="status">Status</label>
+            <input id="status" type="text" name="status" placeholder="Project Status"/>
+
+            <input type="submit" value="Add Project"/>
+        </form>
+    </main>
+
+    <script src="projects.js"></script>
+    <script src="form.js"></script>
 </body>
 </html>

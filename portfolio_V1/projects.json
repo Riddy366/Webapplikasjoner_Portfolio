@@ -1,0 +1,14 @@
+[
+{
+    "id": "1",
+    "name": "Prosjekt 1",
+    "description": "Beskrivelse1",
+    "status": "In progress"
+},
+{
+    "id": "2",
+    "name": "Prosjekt 2",
+    "description": "Beskrivelse2",
+    "status": "In progress"
+}
+]

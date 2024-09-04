@@ -2,13 +2,13 @@
 {
     "id": "1",
     "name": "Prosjekt 1",
-    "description": "Beskrivelse1",
-    "status": "In progress"
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
+    "status": "Finished"
 },
 {
     "id": "2",
     "name": "Prosjekt 2",
-    "description": "Beskrivelse2",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
     "status": "In progress"
 }
 ]

@@ -16,9 +16,9 @@ const fetchDataFromServer = async () => {
   const id = document.getElementById("json");
   if (!id) return;
   // id.innerHTML = result;
-  for (const habit of result) {
+  for (const projects of result) {
     const element = document.createElement("p"); // lager en paragraf
-    element.textContent = habit.title; // lager tittel
+    element.textContent = projects.title; // lager tittel
     id.appendChild(element); // appender til json html
   }
 };

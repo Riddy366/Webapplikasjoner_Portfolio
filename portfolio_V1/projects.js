@@ -11,7 +11,7 @@ fetch('projects.json')
 
 // Legg til prosjekter i HTML
 function addProjectsToHTML(projects) {
-  const prosjekterSection = document.getElementById('prosjekter');
+  const prosjectSection = document.getElementById('prosjekter');
 
   projects.forEach(project => {
     const article = document.createElement('article');
@@ -24,7 +24,18 @@ function addProjectsToHTML(projects) {
     const projectTitle = document.createElement('h3');
     projectTitle.appendChild(linkElement);
 
+    const projectDescription = document.createElement('article')
+    projectDescription.textContent = project.description
+    projectDescription.className = 'project-description'
+
+    const projectStatus = document.createElement('article');
+    projectStatus.textContent = `Status: ${project.status}`
+  
     article.appendChild(projectTitle);
-    prosjekterSection.appendChild(article);
+    article.appendChild(projectDescription);
+    article.appendChild(projectStatus)
+
+
+    prosjectSection.appendChild(article);
   });
 }

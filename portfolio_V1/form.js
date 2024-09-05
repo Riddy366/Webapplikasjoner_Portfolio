@@ -6,18 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
 
     const title = document.getElementById("title").value;
-<<<<<<< HEAD
     const description = document.getElementById("description").value;
     const status = document.getElementById("status").value;
 
-=======
-    // const id = document.getElementById("id").value;
-    const description = document.getElementById("description").value;
-    const status = document.getElementById("status").value;
-
-
-
->>>>>>> d2072c5ebeec8a7052f00c76c404b0c9ecac653d
     const newProject = {
       title: title,
       description: description,
@@ -25,11 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     try {
-<<<<<<< HEAD
       const response = await fetch("http://localhost:3999/", {
-=======
-      const response = await fetch("http://localhost:3999", {
->>>>>>> d2072c5ebeec8a7052f00c76c404b0c9ecac653d
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,19 +24,16 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(newProject),
       });
 
-<<<<<<< HEAD
       if (response.ok) {
         const addedProject = await response.json(); // Les responsen som JSON
         console.log("Prosjekt lagret på serveren:", addedProject);
-        
+
         // Legg til prosjektet i DOM-en
-        addProjectToDOM(addedProject.title, addedProject.description, addedProject.status);
-=======
-      // Sjekk om responsen er OK
-      if (response.ok) {
-        const newProject = await response.json(); // Les responsen som JSON
-        console.log("Prosjekt lagret på serveren:", newProject);
->>>>>>> d2072c5ebeec8a7052f00c76c404b0c9ecac653d
+        addProjectToDOM(
+          addedProject.title,
+          addedProject.description,
+          addedProject.status
+        );
       } else {
         console.error(`Serveren returnerte en feil: ${response.statusText}`);
       }

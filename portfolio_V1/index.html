@@ -1,49 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header>
-        <h1>Portfolio Ridwan</h1>
+      <h1>Portfolio Ridwan</h1>
     </header>
-    
+
     <main class="main-content">
+      <section id="prosjekter">
+        <h2>Prosjekter</h2>
+      </section>
 
-        <section id="prosjekter">
-            <h2>Prosjekter</h2>
-        </section>
+      <form id="projectForm" action="/post_project" method="POST">
+        <label for="title">Project Title</label>
+        <input
+          id="title"
+          type="text"
+          name="title"
+          placeholder="Project Title"
+          required
+        />
 
-        <form id ="projectForm" action="/post_project" method="POST">
-            
-            <label for="title">Project Title</label>
-            <input id="title" type="text" name="title" placeholder="Project Title" required/>
-
-
-            <!-- <label for="id">Id</label>
+        <!-- <label for="id">Id</label>
             <input id="id" type="text" name="id" placeholder="Project Title" required/> -->
 
+        <label for="description">Project Description</label>
+        <input
+          id="description"
+          type="text"
+          name="description"
+          placeholder="Project Description"
+          required
+        />
 
-            <label for="description">Project Description</label>
-            <input id="description" type="text" name="description" placeholder="Project Description" required/>
-
-            <!-- <label for="start_date">Start Date</label>
+        <!-- <label for="start_date">Start Date</label>
             <input id="start_date" type="date" name="start_date" required/>
 
             <label for="end_date">End Date</label>
             <input id="end_date" type="date" name="end_date" required/> -->
 
-            <label for="status">Status</label>
-            <input id="status" type="text" name="status" placeholder="Project Status"/>
+        <label for="status">Status</label>
+        <input
+          id="status"
+          type="text"
+          name="status"
+          placeholder="Project Status"
+        />
 
-            <input type="submit" value="Add Project"/>
-        </form>
+        <input type="submit" value="Add Project" />
+      </form>
     </main>
 
     <script src="projects.js"></script>
     <script src="form.js"></script>
-</body>
+  </body>
 </html>

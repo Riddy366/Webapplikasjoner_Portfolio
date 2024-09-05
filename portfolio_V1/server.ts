@@ -14,17 +14,13 @@ app.use("/static", serveStatic({ root: "./" })); // Gjør det mulig å serve sta
 const projects: Project[] = [];
 
 // Håndter GET forespørsel for /
-<<<<<<< HEAD
 app.get("/project", (c) => {
-=======
-app.get("/", (c) => {
->>>>>>> d2072c5ebeec8a7052f00c76c404b0c9ecac653d
     return c.json(projects);
 });
 
 // Håndter POST forespørsel for /
 app.post("/", async (c) => {
-<<<<<<< HEAD
+
     try {
         const newProject = await c.req.json();
         const project = ProjectSchema.parse(newProject);
@@ -40,23 +36,6 @@ app.post("/", async (c) => {
         }
     }
 });
-=======
-  try {
-      const newProject = await c.req.json();
-      const project = ProjectSchema.parse(newProject);
-      projects.push(project);
-      return c.json(project, { status: 201 });
-  } catch (error) {
-      if (error instanceof z.ZodError) {
-          return c.json({ error: "Invalid Project", details: error.errors }, { status: 400 });
-      } else {
-          console.error("Unexpected error:", error);
-          return c.json({ error: "Internal Server Error" }, { status: 500 });
-      }
-  }
-});
-
->>>>>>> d2072c5ebeec8a7052f00c76c404b0c9ecac653d
 
 const port = 3999;
 

@@ -2,27 +2,68 @@ import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { serveStatic } from "@hono/node-server/serve-static";
-import { readFile } from "fs/promises";
+import { ProjectSchema, type Project } from "./types";
+import { z } from "zod";
 
-const app = new Hono() //Ny Hono instans
+const app = new Hono(); // Ny Hono instans
 
-app.use("/*", cors()) // Alle request som kommer skal gå gjennom cors, gir bekreftelse på om du får lov til å komme deg gjennom
+app.use("/*", cors()); // Alle request som kommer skal gå gjennom cors, gir bekreftelse på om du får lov til å komme deg gjennom
 
-app.use("/statics*/", serveStatic({root: "./"})) // Gjør det mulig å serve statiske filer på statics
+app.use("/static", serveStatic({ root: "./" })); // Gjør det mulig å serve statiske filer på /static
 
-// app.get sier at den sal lytte til en get forespørssel, skal hente port 3999/json (definerer url vi skal hente fra)
-// c er hjelp vi får fra Hono for å gi oss hjelpemetoder (returnere noe i json format)
-app.get("/json", async (c) => {
-    const data = await readFile("./projects.json", "utf-8")
-    return c.json((JSON.parse(data)))
-})
+const projects: Project[] = [];
 
-const port = 3999
+// Håndter GET forespørsel for /
+<<<<<<< HEAD
+app.get("/project", (c) => {
+=======
+app.get("/", (c) => {
+>>>>>>> d2072c5ebeec8a7052f00c76c404b0c9ecac653d
+    return c.json(projects);
+});
 
-console.log("Server is Running")
+// Håndter POST forespørsel for /
+app.post("/", async (c) => {
+<<<<<<< HEAD
+    try {
+        const newProject = await c.req.json();
+        const project = ProjectSchema.parse(newProject);
 
-// slik serveren skal starte Hono for node servere
+        projects.push(project);
+        return c.json(project, { status: 201 });
+    } catch (error) {
+        if (error instanceof z.ZodError) {
+            return c.json({ error: "Invalid Project", details: error.errors }, { status: 400 });
+        } else {
+            console.error("Unexpected error:", error);
+            return c.json({ error: "Internal Server Error" }, { status: 500 });
+        }
+    }
+});
+=======
+  try {
+      const newProject = await c.req.json();
+      const project = ProjectSchema.parse(newProject);
+      projects.push(project);
+      return c.json(project, { status: 201 });
+  } catch (error) {
+      if (error instanceof z.ZodError) {
+          return c.json({ error: "Invalid Project", details: error.errors }, { status: 400 });
+      } else {
+          console.error("Unexpected error:", error);
+          return c.json({ error: "Internal Server Error" }, { status: 500 });
+      }
+  }
+});
+
+>>>>>>> d2072c5ebeec8a7052f00c76c404b0c9ecac653d
+
+const port = 3999;
+
+console.log(`Server is running on http://localhost:${port}`);
+
+// Start serveren
 serve({
     fetch: app.fetch,
     port
-})
+});

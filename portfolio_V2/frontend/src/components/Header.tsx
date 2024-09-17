@@ -10,10 +10,13 @@ export default function Header({
   points = 0,
 }: studentProps) {
   return (
-    <header>
-      <h1>{student}</h1>
-      <p>{degree}</p>
-      <p>{points}</p>
-    </header>
+    <>
+      <h2>Student info</h2>
+      <header>
+        <h1>{student}</h1>
+        <p>{degree}</p>
+        <p>{points}</p>
+      </header>
+    </>
   );
 }

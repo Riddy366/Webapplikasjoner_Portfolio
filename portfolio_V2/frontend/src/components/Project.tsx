@@ -11,9 +11,11 @@ export default function Projecs({
 }: ProjectProps) {
   return (
     <>
-      <h2>{title}</h2>
-      <p>{description}</p>
-      <small>{createdAt}</small>
+      <div className="card">
+        <h2>{title}</h2>
+        <p>{description}</p>
+        <small>{createdAt}</small>
+      </div>
     </>
   );
 }

@@ -1,23 +1,42 @@
+import React, { useState } from "react";
 import Header from "./components/Header";
 import Contact from "./components/Contact";
 import Experiences from "./components/Experiences";
 import Projects from "./components/Projects";
 import Form from "./components/Form";
+import CreateProject from "./components/CreateProject";
+import "./style.css";
 
 function App() {
-  // const student = 'Halgeir Geirson'
-  // const degree = 'Bachelor IT'
-  // const points = 180
-  // const experienceOne = 'Figma UI for customer X'
-  // const experienceTwo = 'Website for customer Y'
-  // const email = 'student@hiof.no'
+  const [projects, setProjects] = useState<
+    {
+      title: string;
+      description: string;
+      createdAt: string;
+      category: string;
+    }[]
+  >([]);
+
+  const handleAddProject = (project: {
+    title: string;
+    description: string;
+    createdAt: string;
+    category: string;
+  }) => {
+    setProjects((prevProjects) => [...prevProjects, project]);
+  };
+
+  const handleRemoveProject = (index: number) => {
+    setProjects((prevProjects) => prevProjects.filter((_, i) => i !== index));
+  };
 
   return (
     <>
       <Header student="Halgeir Geirson" degree="Bachelor IT" points={500} />
       <Experiences />
       <Contact email="student@hiof.no" />
-      <Projects />
+      <CreateProject onAddProject={handleAddProject} />
+      <Projects projects={projects} onRemoveProject={handleRemoveProject} />
       <Form />
     </>
   );

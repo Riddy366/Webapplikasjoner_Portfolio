@@ -1,39 +1,45 @@
-import Project from "./Project";
+import React from "react";
 
-export default function Projects() {
-  const projects = [
-    {
-      title: "Prosjekt1",
-      description: "Desc1",
-      createdAt: "dato idag",
-    },
-    {
-      title: "Prosjekt2",
-      description: "Desc2",
-      createdAt: "dato idag",
-    },
-    {
-      title: "Prosjekt3",
-      description: "Desc3",
-      createdAt: "dato idag",
-    },
-  ];
+interface Project {
+  title: string;
+  description: string;
+  createdAt: string;
+  category: string;
+}
 
+interface ProjectsProps {
+  projects: Project[];
+  onRemoveProject: (index: number) => void;
+}
+
+const Projects: React.FC<ProjectsProps> = ({ projects, onRemoveProject }) => {
   return (
-    <>
+    <div>
       <h2>Prosjekter</h2>
       {projects.length === 0 ? (
-        <p>Ingen prosjekter</p>
+        <p>Ingen prosjekter lagt til.</p>
       ) : (
         projects.map((project, index) => (
-          <Project
-            key={index}
-            title={project.title}
-            description={project.description}
-            createdAt={project.createdAt}
-          />
+          <div key={index} className="card">
+            <h3>{project.title}</h3>
+            <p>{project.description}</p>
+            <p>
+              <strong>Kategori:</strong> {project.category}
+            </p>
+            <p>
+              <strong>Opprettet:</strong> {project.createdAt}
+            </p>
+            <button
+              onClick={() => onRemoveProject(index)}
+              className="remove-button"
+            >
+              Fjern Prosjekt
+            </button>
+          </div>
         ))
       )}
-    </>
+    </div>
   );
-}
+};
+
+export default Projects;

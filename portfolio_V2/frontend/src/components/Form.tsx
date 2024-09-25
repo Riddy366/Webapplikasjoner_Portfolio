@@ -1,22 +1,21 @@
 import { useState } from "react";
 
-export default function ContactForm() {
-  const [name, setName] = useState("");
-  const [message, setMessage] = useState("");
-  const [submittedData, setSubmittedData] = useState<{
-    name: string;
-    message: string;
-  } | null>(null);
+export default function Form() {
+  const [formData, setFormData] = useState({ name: "", message: "" });
+  const [submittedData, setSubmittedData] = useState(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = ({ target: { name, value } }) => {
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !message) {
+    if (!formData.name || !formData.message) {
       alert("Begge feltene må fylles ut.");
       return;
     }
-    setSubmittedData({ name, message });
-    setName("");
-    setMessage("");
+    setSubmittedData(formData);
+    setFormData({ name: "", message: "" });
   };
 
   return (
@@ -25,20 +24,18 @@ export default function ContactForm() {
         <label htmlFor="name">Navn:</label>
         <input
           type="text"
-          id="name"
+          name="name"
           placeholder="Skriv navnet ditt"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={formData.name}
+          onChange={handleChange}
         />
-
         <label htmlFor="message">Melding:</label>
         <textarea
-          id="message"
+          name="message"
           placeholder="Skriv en melding"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          value={formData.message}
+          onChange={handleChange}
         />
-
         <button type="submit">Send</button>
       </form>
 

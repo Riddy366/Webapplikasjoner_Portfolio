@@ -5,7 +5,7 @@ type ExperienceProps = {
 
 export default function Experience({ title, description }: ExperienceProps) {
   return (
-    <div>
+    <div className="card">
       <h3>{title}</h3>
       <p>{description}</p>
     </div>

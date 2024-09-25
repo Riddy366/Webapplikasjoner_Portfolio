@@ -1,8 +1,8 @@
-type contactProps = {
+type ContactProps = {
   email: string;
 };
 
-export default function Contact({ email = "email@domene.com" }: contactProps) {
+export default function Contact({ email = "email@domene.com" }: ContactProps) {
   const contactInfo = [
     {
       name: "Navn",
@@ -17,6 +17,7 @@ export default function Contact({ email = "email@domene.com" }: contactProps) {
       {contactInfo.map((contact, index) => (
         <button
           key={index}
+          className="contact-button"
           onClick={() =>
             alert(
               `Email: ${email}\nNavn: ${contact.name} \nUtdanning: ${contact.degree}`

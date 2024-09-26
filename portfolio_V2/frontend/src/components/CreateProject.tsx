@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-interface CreateProjectProps {
+type CreateProjectProps = {
   onAddProject: (project: {
     title: string;
     description: string;

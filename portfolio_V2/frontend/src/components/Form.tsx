@@ -4,15 +4,14 @@ export default function Form() {
   const [formData, setFormData] = useState({ name: "", message: "" });
   const [submittedData, setSubmittedData] = useState(null);
 
-  const handleChange = ({ target: { name, value } }) => {
-    setFormData({ ...formData, [name]: value });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.message) {
-      alert("Begge feltene må fylles ut.");
-      return;
+      return alert("Begge feltene må fylles ut.");
     }
     setSubmittedData(formData);
     setFormData({ name: "", message: "" });

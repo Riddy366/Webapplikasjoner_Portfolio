@@ -1,38 +1,53 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Contact from "./components/Contact";
 import Experiences from "./components/Experiences";
 import Projects from "./components/Projects";
-import Form from "./components/Form";
 import CreateProject from "./components/CreateProject";
 import "./style.css";
+import Form from "./components/Form";
 
-function App() {
-  const [projects, setProjects] = useState<
-    {
-      title: string;
-      description: string;
-      createdAt: string;
-      category: string;
-    }[]
-  >([]);
+const App = () => {
+  const [projects, setProjects] = useState([]);
 
-  const handleAddProject = (project: {
-    title: string;
-    description: string;
-    createdAt: string;
-    category: string;
-  }) => {
-    setProjects((prevProjects) => [...prevProjects, project]);
+  const fetchProjects = async () => {
+    try {
+      const response = await fetch("http://localhost:3999/projects");
+      if (!response.ok) throw new Error("Network response was not ok");
+      const data = await response.json();
+      setProjects(data);
+    } catch (error) {
+      console.error("Failed to fetch projects:", error);
+    }
   };
 
-  const handleRemoveProject = (index: number) => {
-    setProjects((prevProjects) => prevProjects.filter((_, i) => i !== index));
+  const handleAddProject = async (project) => {
+    try {
+      const response = await fetch("http://localhost:3999/projects", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(project),
+      });
+
+      if (!response.ok) throw new Error("Network response was not ok");
+      setProjects(await response.json());
+    } catch (error) {
+      console.error("Error adding project:", error);
+      alert("Kunne ikke opprette prosjekt: " + error.message);
+    }
   };
+
+  const handleRemoveProject = (index) => {
+    setProjects((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
 
   return (
     <>
-      <Header student="Halgeir Geirson" degree="Bachelor IT" points={500} />
+      <Header student="Ridwan Abukar" degree="Informasjonssystemer" points={500} />
       <Experiences />
       <Contact email="student@hiof.no" />
       <CreateProject onAddProject={handleAddProject} />

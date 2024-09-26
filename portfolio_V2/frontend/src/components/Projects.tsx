@@ -12,6 +12,7 @@ interface ProjectsProps {
   onRemoveProject: (index: number) => void;
 }
 
+// Samler prosjektene i hver sin kategori og teller antall prosjekter pr kategori
 const Projects: React.FC<ProjectsProps> = ({ projects, onRemoveProject }) => {
   const categoryCounts = projects.reduce(
     (counts: { [key: string]: number }, project) => {

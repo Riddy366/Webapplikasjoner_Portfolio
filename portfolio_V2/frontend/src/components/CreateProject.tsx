@@ -18,6 +18,7 @@ const CreateProject: React.FC<CreateProjectProps> = ({ onAddProject }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Sjekker om alle feltene er fylt
     if (!title || !description || !createdAt || !category) {
       alert("Alle feltene må fylles ut.");
       return;
@@ -25,6 +26,7 @@ const CreateProject: React.FC<CreateProjectProps> = ({ onAddProject }) => {
 
     onAddProject({ title, description, createdAt, category });
 
+    // Reset form
     setTitle("");
     setDescription("");
     setCreatedAt("");

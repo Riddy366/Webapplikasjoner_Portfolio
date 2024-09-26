@@ -8,11 +8,13 @@ export default function Form() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Sjekker om Feltene til form blir fylt ut
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.message) {
       return alert("Begge feltene må fylles ut.");
     }
+    // Resetter formen
     setSubmittedData(formData);
     setFormData({ name: "", message: "" });
   };

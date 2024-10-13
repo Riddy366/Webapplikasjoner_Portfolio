@@ -1,13 +1,14 @@
 
 :root {
-    --main-color: #007bff;
-    --second-color: #0056b3;
-    --background-color: #f8f9fa;
-    --text-color: #333;
+    --main-color: #2B124C;
+    --second-color: #522b5b;
+    --background-color: #190019;
+    --text-color: #fac9af;
     --font-family: Tahoma, sans-serif;
     --padding: 20px;
     --margin: 10px;
     --card-shadow: rgba(0, 0, 0, 0.1);
+    --form-text-color: 
 }
 
 body {
@@ -24,6 +25,7 @@ header {
     color: white;
     padding: 20px;
     text-align: center;
+    border-radius: 10px;
 }
 
 .navbar {
@@ -57,7 +59,7 @@ header {
 
 footer {
     color: white;
-    background-color: var(--second-color);
+    background-color: var(--main-color);
     text-align: center;
     padding: 1rem;
     border-radius: 0.25rem;

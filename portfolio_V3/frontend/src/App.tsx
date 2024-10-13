@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
-import Header from "./components/Header";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout";
 import Contact from "./components/Contact";
 import Experiences from "./components/Experiences";
 import Projects from "./components/Projects";
 import CreateProject from "./components/CreateProject";
-import "./style.css";
 import Form from "./components/Form";
-import Footer from "./components/Footer";
-import {Route, Routes } from "react-router-dom";
+import "./style.css";
 
 const App = () => {
   const [projects, setProjects] = useState([]);
@@ -48,17 +47,12 @@ const App = () => {
   }, []);
 
   return (
-    // Bruk navigasjonsbar til å rotue til andre komponentene
-    <>
-      <Header
-        student="Ridwan Abukar"
-        degree="Informasjonssystemer"
-        points={500}
-      />
-      <Routes>
-        {/* Router til hjemmeside når logo blir trykket på */}
+    <Routes>
+      {/* Layout renderer felles elementene */}
+      <Route path="/" element={<Layout />}>
+        {/* Forsiden viser prosjekter + form */}
         <Route
-          path="/"
+          index
           element={
             <>
               <CreateProject onAddProject={handleAddProject} />
@@ -70,20 +64,19 @@ const App = () => {
           }
         />
 
+        {/* Routes */}
         <Route path="erfaringer" element={<Experiences />} />
-
         <Route
           path="kontakt"
           element={
             <>
-              <Contact email={"student@hiof.no"} />
+              <Contact email="student@hiof.no" />
               <Form />
             </>
           }
         />
-      </Routes>
-      <Footer />
-    </>
+      </Route>
+    </Routes>
   );
 };
 

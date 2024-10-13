@@ -14,6 +14,7 @@ export default function Contact({ email = "email@domene.com" }: ContactProps) {
     <>
       <h2>Contact</h2>
       <p>{email}</p>
+      {/*Mapper ut kontakt listen og legger det som alert når knappen trykkes på*/}
       {contactInfo.map((contact, index) => (
         <button
           key={index}

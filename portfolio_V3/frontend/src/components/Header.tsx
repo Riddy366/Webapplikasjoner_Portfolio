@@ -17,8 +17,10 @@ export default function Header({
     <>
       <h2>Student info</h2>
       <header>
-        <Logo/>
+        {/*Tar imot logo og nav komponentet*/}
+        <Logo/>  
       <Nav/>
+      {/* Standard stil for header */}
         <h1>{student}</h1>
         <p>{degree}</p>
         <p>{points}</p>

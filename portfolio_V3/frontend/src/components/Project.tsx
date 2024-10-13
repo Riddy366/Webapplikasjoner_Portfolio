@@ -11,6 +11,7 @@ export default function Projecs({
 }: ProjectProps) {
   return (
     <>
+    {/* Standard stil for prosjekt kortene */}
       <div className="card">
         <h2>{title}</h2>
         <p>{description}</p>

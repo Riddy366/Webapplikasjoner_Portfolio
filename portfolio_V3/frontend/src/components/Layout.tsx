@@ -5,6 +5,7 @@ import Footer from "./Footer";
 
 const Layout = () => {
   return (
+    // Elementer som er med gjennom alle sidene
     <>
       <Header
         student="Ridwan Abukar"

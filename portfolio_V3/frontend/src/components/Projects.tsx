@@ -27,14 +27,14 @@ const Projects: React.FC<ProjectsProps> = ({ projects, onRemoveProject }) => {
       <h2>Prosjekter</h2>
 
       {/* Summering per kategori */}
-      <h3>Totaler per kategori</h3>
+      <h3>Total projects pr category:</h3>
       {!projects.length ? (
-        <p>Ingen prosjekter.</p>
+        <p>Projects will come soon...</p>
       ) : (
         <ul>
           {Object.keys(categoryCounts).map((category) => (
             <li key={category}>
-              {category}: {categoryCounts[category]} prosjekter
+              {category}: {categoryCounts[category]} projects
             </li>
           ))}
         </ul>
@@ -46,12 +46,12 @@ const Projects: React.FC<ProjectsProps> = ({ projects, onRemoveProject }) => {
           <h3>{project.title}</h3>
           <p>{project.description}</p>
           <p>
-            <strong>Kategori:</strong> {project.category}
+            <strong>Category:</strong> {project.category}
           </p>
           <p>
-            <strong>Opprettet:</strong> {project.createdAt}
+            <strong>Created at:</strong> {project.createdAt}
           </p>
-          <button onClick={() => onRemoveProject(index)}>Fjern Prosjekt</button>
+          <button onClick={() => onRemoveProject(index)}>Remove project</button>
         </div>
       ))}
     </div>

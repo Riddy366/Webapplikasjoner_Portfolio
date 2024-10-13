@@ -22,7 +22,7 @@ export default function Experiences() {
     grensesnittet det finnes ingen erfaringer */}
       <h2>Experiences</h2>
       {experiences.length === 0 ? (
-        <p>Ingen erfaringer</p>
+        <p>No experiences</p>
       ) : (
         // Hvis erfaringer finnes så mapper vi ut objektet
         experiences.map((experience, index) => (

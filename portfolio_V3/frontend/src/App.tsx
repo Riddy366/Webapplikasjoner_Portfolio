@@ -5,36 +5,38 @@ import Contact from "./components/Contact";
 import Experiences from "./components/Experiences";
 import Projects from "./components/Projects";
 import CreateProject from "./components/CreateProject";
-import Form from "./components/Form";
+import Form from "./components/ContactForm";
 import "./style.css";
+import { API_URL, PROJECT_PATH } from "./configs/apiurl";
+import { ADDING_PROJECT, FETCH_PROJECT, NETWORK_ERROR, UPLOAD_PROJECT } from "./configs/error";
 
 const App = () => {
   const [projects, setProjects] = useState([]);
 
   const fetchProjects = async () => {
     try {
-      const response = await fetch("http://localhost:3999/projects");
+      const response = await fetch(`${API_URL} ${PROJECT_PATH}`);
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
       setProjects(data);
     } catch (error) {
-      console.error("Failed to fetch projects:", error);
+      {console.error(FETCH_PROJECT, error);} // error config
     }
   };
 
   const handleAddProject = async (project) => {
     try {
-      const response = await fetch("http://localhost:3999/projects", {
+      const response = await fetch(`${PROJECT_PATH}`, { // apiurl config
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(project),
       });
 
-      if (!response.ok) throw new Error("Network response was not ok");
+      if (!response.ok) throw new Error(NETWORK_ERROR); // error config
       setProjects(await response.json());
     } catch (error) {
-      console.error("Error adding project:", error);
-      alert("Kunne ikke opprette prosjekt: " + error.message);
+      console.error(ADDING_PROJECT, error);
+      alert(UPLOAD_PROJECT + error.message); // error config
     }
   };
 
@@ -65,9 +67,9 @@ const App = () => {
         />
 
         {/* Routes */}
-        <Route path="erfaringer" element={<Experiences />} />
+        <Route path="experiences" element={<Experiences />} />
         <Route
-          path="kontakt"
+          path="contact"
           element={
             <>
               <Contact email="student@hiof.no" />

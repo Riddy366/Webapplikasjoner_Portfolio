@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 export default function Nav() {
     return(
         <>
+        {/* Navigasjonsbar med routing */}
         <nav className="navbar">
             <ul className="nav-list">
-                <li><a href="#">Om meg</a></li>
-                <li><Link to="/erfaringer">Erfaringer</Link></li>
-                <li><Link to="/kontakt">Kontakt</Link></li>
+                <li><a href="#">About me</a></li>
+                <li><Link to="/experiences">Experiences</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
             </ul>
         </nav>
         </>

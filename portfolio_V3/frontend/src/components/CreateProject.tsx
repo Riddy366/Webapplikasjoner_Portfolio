@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import useProjectForm from "../hooks/useProjectForm";
 
 type CreateProjectProps = {
   onAddProject: (project: {
@@ -7,52 +7,46 @@ type CreateProjectProps = {
     createdAt: string;
     category: string;
   }) => void;
-}
+};
 
 const CreateProject: React.FC<CreateProjectProps> = ({ onAddProject }) => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [createdAt, setCreatedAt] = useState("");
-  const [category, setCategory] = useState("");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Sjekker om alle feltene er fylt
-    if (!title || !description || !createdAt || !category) {
-      alert("Alle feltene må fylles ut.");
-      return;
-    }
-
-    onAddProject({ title, description, createdAt, category });
-
-    // Reset form
-    setTitle("");
-    setDescription("");
-    setCreatedAt("");
-    setCategory("");
-  };
+  // custom hook for prosjektForm
+  const {
+    title,
+    setTitle,
+    description,
+    setDescription,
+    createdAt,
+    setCreatedAt,
+    category,
+    setCategory,
+    submitProject,
+  } = useProjectForm();
 
   return (
-    <form onSubmit={handleSubmit} className="create-project-form">
-      <label htmlFor="title">Prosjekttittel:</label>
+    // Lager en form for å kunne opprette prosjekter
+    <form
+      onSubmit={submitProject(onAddProject)}
+      className="create-project-form"
+    >
+      <label htmlFor="title">Project Title:</label>
       <input
         type="text"
         id="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="Skriv prosjekttittel"
+        placeholder="Project title..."
       />
 
-      <label htmlFor="description">Beskrivelse:</label>
+      <label htmlFor="description">Description:</label>
       <textarea
         id="description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        placeholder="Skriv beskrivelse"
+        placeholder="Description..."
       />
 
-      <label htmlFor="createdAt">Dato:</label>
+      <label htmlFor="createdAt">Date:</label>
       <input
         type="date"
         id="createdAt"
@@ -60,16 +54,16 @@ const CreateProject: React.FC<CreateProjectProps> = ({ onAddProject }) => {
         onChange={(e) => setCreatedAt(e.target.value)}
       />
 
-      <label htmlFor="category">Kategori:</label>
+      <label htmlFor="category">Category:</label>
       <input
         type="text"
         id="category"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        placeholder="Skriv kategori"
+        placeholder="Category..."
       />
 
-      <button type="submit">Opprett Prosjekt</button>
+      <button type="submit">Create project</button>
     </form>
   );
 };

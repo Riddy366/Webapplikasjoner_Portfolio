@@ -1,0 +1,17 @@
+Mulige refaktoreringsmetoder for å gjøre applikasjonen bedre på.
+
+1. Tegne opp en bedre og mer detaljert wireframe som inneholder forskjellige sider når du navigerer deg.
+Fordelen med dette kan føre til bedre kontroll og oversikt på hva du trenger av komponenter og stiler som du har bestemt deg for.
+Kan fort bli alt for detaljert og bruke for mye tid til å ha alt ”korrekt” før du starter på koden.
+Det er da greit å starte med en overordnet greit wireframe der du vet hvor ting skal ligge og style det selv i koden til ditt eget ønske.
+
+2. Redusere koden så det er lesbart og lett å forstå hva de ulike kodesnuttene gjør.
+Ha kommentarer for de viktigste kodebitene som forklarer kort hva som skjer i koden som gjør det lett å finne igjen og endre på når det trengs.
+Ulempen kan forekomme hvis koden blir alt for redusert at det ikke er lesbart lenger.
+
+3. Bedre navn på variabler som gir mening for hva kodebiten skal gjør,
+det gjør det enklere for deg når du skal gjenbruke variablene i en annen komponent og gjør det mer lesbart.
+Det krever at du må gå gjennom alle filene og rette opp så variabel navnene blir mer forstått.
+
+4. Kommentere på kodebitene så det blir lettere å forstå hva den gjør.
+Ulempen med dette er at det kan bli for mye støy, skriv kommentarer til de store og viktigste kodebitene,

@@ -7,8 +7,7 @@ import CreateProject from "./components/CreateProject";
 import "./style.css";
 import Form from "./components/Form";
 import Footer from "./components/Footer";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Logo from "./components/Logo";
+import {Route, Routes } from "react-router-dom";
 
 const App = () => {
   const [projects, setProjects] = useState([]);

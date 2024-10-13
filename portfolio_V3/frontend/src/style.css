@@ -1,123 +1,126 @@
-/* Generelle stiler */
-body {
-    font-family: Tahoma, sans-serif;
-    line-height: 1.6;
-    margin: 10px;
-    padding: 10px;
 
+:root {
+    --main-color: #007bff;
+    --second-color: #0056b3;
+    --background-color: #f8f9fa;
+    --text-color: #333;
+    --font-family: Tahoma, sans-serif;
+    --padding: 20px;
+    --margin: 10px;
+    --card-shadow: rgba(0, 0, 0, 0.1);
 }
 
-/* Header */
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    margin: var(--padding);
+    padding: var(--padding);
+    background-color: var(--background-color);
+}
+
+
 header {
-    background: #007bff;
+    background: var(--main-color);
     color: white;
     padding: 20px;
     text-align: center;
 }
-.nav-list {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
-.nav-list a {
-    color: #000;
-    text-decoration: none;
-}
-.navlist a:hover {
-    background-color: grey;
-}
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+
+.logo {
+    width: 100px; 
     float: right;
 }
 
-.logo {
-    width: 100px;
-    float: left;
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    
+    a {
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+            background-color: var(--second-color);
+        }
+    }
 }
 
+
 footer {
-    color: blue;
-    background-color:grey;
+    color: white;
+    background-color: var(--second-color);
     text-align: center;
     padding: 1rem;
     border-radius: 0.25rem;
+    margin-top: 20px;
 }
 
-/* Overskrifter */
-h2 {
-    color: #333;
-    margin-bottom: 15px;
+.project-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
 }
-h3 {
-    color: black;
-}
-p{
-    color: black;
-}
-h1 {
-    color: black;
+
+.card {
+    background: white;
+    color: var(--text-color);
+    padding: var(--padding);
+    margin: var(--margin);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--card-shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 30px var(--card-shadow);
+        
+    }
 }
 
 
-
-/* Skjemaer */
 .create-project-form,
 .contact-form {
     background: white;
     padding: 30px;
-    margin: 20px auto;
     border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+    box-shadow: 0 4px 20px var(--card-shadow);
+    max-width: 100%; /* Fyll hele kolonnen */
+    
+    label {
+        color: var(--text-color);
+        font-weight: bold;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0 20px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        transition: border-color 0.3s;
+
+        &:focus {
+            border-color: var(--main-color);
+        }
+    }
 }
 
-/* Label-stil */
-.create-project-form label,
-.contact-form label {
-    color: #000;
-    font-weight: bold;
-    margin-bottom: 8px;
-    display: block;
-}
 
-/* Forbedret formfelter */
-.create-project-form input,
-.create-project-form textarea,
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0 20px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    transition: border-color 0.3s;
-    max-width: 400px;
-}
-
-.create-project-form input:focus,
-.create-project-form textarea:focus,
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: #007bff;
-}
-
-/* Kort for prosjekter og erfaringer */
-.card {
-    background: white;
-    color: #333;
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-/* Knapper */
 button {
-    background: #007bff;
+    background: var(--main-color);
     color: white;
     border: none;
     padding: 12px 15px;
@@ -125,38 +128,34 @@ button {
     cursor: pointer;
     transition: background 0.3s;
     width: 100%;
+
+    &:hover {
+        background: var(--second-color);
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
 }
 
-button:hover {
-    background: #0056b3;
-}
 
-/* Slett-knapper */
 .remove-button {
-    background-color: #ff4d4d;
     color: white;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    width: 100%;
 }
 
-.remove-button:hover {
-    background-color: #cc0000;
+
+h1, h2, h3, p {
+    margin-bottom: 15px;
+    color: var(--text-color);
 }
 
-/* Innhold */
-p {
-    margin: 10px 0;
+h2 {
+    color: var(--text-color);
 }
 
-/* Prosjekttekst */
-.project-text {
-    color: #000; /* Setter tekstfarge til svart */
-}
 
-pre {
-    color: black
-}

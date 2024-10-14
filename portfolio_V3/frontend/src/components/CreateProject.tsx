@@ -1,4 +1,7 @@
-import useProjectForm from "../hooks/useProjectForm";
+import React from "react";
+import useProjectForm from "../hooks/useProjectForm"; // Importer din custom hook
+import { projectSchema } from "../schemas/projectSchema"; // Importer Zod-skjemaet
+import { FORM_FIELDS } from "../configs/error";
 
 type CreateProjectProps = {
   onAddProject: (project: {
@@ -10,7 +13,6 @@ type CreateProjectProps = {
 };
 
 const CreateProject: React.FC<CreateProjectProps> = ({ onAddProject }) => {
-  // custom hook for prosjektForm
   const {
     title,
     setTitle,
@@ -21,14 +23,35 @@ const CreateProject: React.FC<CreateProjectProps> = ({ onAddProject }) => {
     category,
     setCategory,
     submitProject,
-  } = useProjectForm();
+  } = useProjectForm(); // Bruker customHook
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Data som skal valideres
+    const formData = {
+      title,
+      description,
+      createdAt,
+      category,
+    };
+
+    // Validerer med Zod
+    const projectValidationResult = projectSchema.safeParse(formData);
+
+    if (!projectValidationResult.success) {
+      // Hvis valideringen feiler, vis feilmeldinger
+      console.error(projectValidationResult.error.format());
+      alert(`Validation failed!, ${FORM_FIELDS}`);
+      return;
+    }
+
+    // Hvis valideringen lykkes, kall `submitProject`
+    submitProject(onAddProject)(e);
+  };
 
   return (
-    // Lager en form for å kunne opprette prosjekter
-    <form
-      onSubmit={submitProject(onAddProject)}
-      className="create-project-form"
-    >
+    <form onSubmit={handleSubmit} className="create-project-form">
       <label htmlFor="title">Project Title:</label>
       <input
         type="text"
@@ -37,7 +60,6 @@ const CreateProject: React.FC<CreateProjectProps> = ({ onAddProject }) => {
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Project title..."
       />
-
       <label htmlFor="description">Description:</label>
       <textarea
         id="description"
@@ -45,7 +67,6 @@ const CreateProject: React.FC<CreateProjectProps> = ({ onAddProject }) => {
         onChange={(e) => setDescription(e.target.value)}
         placeholder="Description..."
       />
-
       <label htmlFor="createdAt">Date:</label>
       <input
         type="date"
@@ -53,7 +74,6 @@ const CreateProject: React.FC<CreateProjectProps> = ({ onAddProject }) => {
         value={createdAt}
         onChange={(e) => setCreatedAt(e.target.value)}
       />
-
       <label htmlFor="category">Category:</label>
       <input
         type="text"
@@ -62,7 +82,6 @@ const CreateProject: React.FC<CreateProjectProps> = ({ onAddProject }) => {
         onChange={(e) => setCategory(e.target.value)}
         placeholder="Category..."
       />
-
       <button type="submit">Create project</button>
     </form>
   );

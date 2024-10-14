@@ -27,11 +27,12 @@ const Projects: React.FC<ProjectsProps> = ({ projects, onRemoveProject }) => {
       <h2>Prosjekter</h2>
 
       {/* Summering per kategori */}
-      <h3>Total projects pr category:</h3>
+      
       {!projects.length ? (
         <p>Projects will come soon...</p>
       ) : (
         <ul>
+          <h3>Total projects pr category:</h3>
           {Object.keys(categoryCounts).map((category) => (
             <li key={category}>
               {category}: {categoryCounts[category]} projects

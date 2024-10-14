@@ -9,6 +9,7 @@ import Form from "./components/ContactForm";
 import "./style.css";
 import { API_URL, PROJECT_PATH } from "./configs/apiurl";
 import { ADDING_PROJECT, FETCH_PROJECT, NETWORK_ERROR, UPLOAD_PROJECT } from "./configs/error";
+import Skills from "./components/Skills";
 
 const App = () => {
   const [projects, setProjects] = useState([]);
@@ -77,6 +78,7 @@ const App = () => {
             </>
           }
         />
+        <Route path="skills" element={<Skills/>}/>
       </Route>
     </Routes>
   );

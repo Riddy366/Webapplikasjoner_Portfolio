@@ -13,11 +13,15 @@ const useProjectForm = () => {
     return (e: React.FormEvent) => {
       e.preventDefault();
 
+      // Standard status er "Yes" om brukeren ikke velger noe
+      const status = selectedOption === "---" ? "Yes" : selectedOption;
+
       // Sjekker om alle feltene er fylt
       if (!title || !description || !createdAt || !category) {
         alert(FORM_FIELDS); // error config
         return;
       }
+
       // Om feltene er fylt så legger den til prosjektet
       onAddProject({ title, description, createdAt, category, status });
 
@@ -26,7 +30,7 @@ const useProjectForm = () => {
       setDescription("");
       setCreatedAt("");
       setCategory("");
-      setSelectedOption("---")
+      setSelectedOption("---");
     };
   };
 

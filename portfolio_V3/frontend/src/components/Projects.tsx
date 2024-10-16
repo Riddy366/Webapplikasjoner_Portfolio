@@ -13,7 +13,7 @@ interface ProjectsProps {
   onRemoveProject: (index: number) => void;
 }
 
-// Samler prosjektene i hver sin kategori og teller antall prosjekter pr kategori
+// Samler prosjektene i valgt kategori og teller antall
 const Projects: React.FC<ProjectsProps> = ({ projects, onRemoveProject }) => {
   const categoryCounts = projects.reduce(
     (counts: { [key: string]: number }, project) => {
@@ -28,7 +28,6 @@ const Projects: React.FC<ProjectsProps> = ({ projects, onRemoveProject }) => {
       <h2>Prosjekter</h2>
 
       {/* Summering per kategori */}
-      
       {!projects.length ? (
         <p>Projects will come soon...</p>
       ) : (
@@ -53,7 +52,9 @@ const Projects: React.FC<ProjectsProps> = ({ projects, onRemoveProject }) => {
           <p>
             <strong>Created at:</strong> {project.createdAt}
           </p>
-          <p>Public: {project.projectStatus}</p>
+          <p>
+            <strong>Public:</strong> {project.projectStatus}
+          </p>
           <button onClick={() => onRemoveProject(index)}>Remove project</button>
         </div>
       ))}

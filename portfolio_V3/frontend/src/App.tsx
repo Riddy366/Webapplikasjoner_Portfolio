@@ -27,7 +27,7 @@ const App = () => {
     }
   };
 
-  const handleAddProject = async (project) => {
+  const handleAddProject = async (project: any) => {
     try {
       const response = await fetch(PROJECT_PATH, { // apiurl config
         method: "POST",

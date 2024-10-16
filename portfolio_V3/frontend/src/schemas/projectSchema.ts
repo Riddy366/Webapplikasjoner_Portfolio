@@ -7,7 +7,6 @@ export const projectSchema = z.object({
   createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
     message: "Invalid date",
   }),
-  
   category: z.string().min(1, { message: "Category is required" }),
 });
 

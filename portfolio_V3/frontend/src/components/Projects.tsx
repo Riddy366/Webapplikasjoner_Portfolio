@@ -53,6 +53,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects, onRemoveProject }) => {
           <p>
             <strong>Created at:</strong> {project.createdAt}
           </p>
+          <p>Public: {project.projectStatus}</p>
           <button onClick={() => onRemoveProject(index)}>Remove project</button>
         </div>
       ))}

@@ -9,7 +9,6 @@ type CreateProjectProps = {
     description: string;
     createdAt: string;
     category: string;
-    projectStatus: string;
   }) => void;
 };
 
@@ -24,8 +23,6 @@ const CreateProject: React.FC<CreateProjectProps> = ({ onAddProject }) => {
     category,
     setCategory,
     submitProject,
-    selectedOption,
-    setSelectedOption
   } = useProjectForm(); // Bruker customHook
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -37,7 +34,6 @@ const CreateProject: React.FC<CreateProjectProps> = ({ onAddProject }) => {
       description,
       createdAt,
       category,
-      status
     };
 
     // Validerer med Zod

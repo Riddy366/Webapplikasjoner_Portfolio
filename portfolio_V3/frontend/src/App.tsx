@@ -7,7 +7,7 @@ import Projects from "./components/Projects";
 import CreateProject from "./components/CreateProject";
 import Form from "./components/ContactForm";
 import "./style.css";
-import { API_URL, PROJECT_PATH } from "./configs/apiurl";
+import { PROJECT_PATH } from "./configs/apiurl.ts";
 import { ADDING_PROJECT, FETCH_PROJECT, NETWORK_ERROR, UPLOAD_PROJECT } from "./configs/error";
 import Skills from "./components/Skills";
 
@@ -16,18 +16,20 @@ const App = () => {
 
   const fetchProjects = async () => {
     try {
-      const response = await fetch(`${API_URL} ${PROJECT_PATH}`);
+      const response = await fetch(PROJECT_PATH);
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
       setProjects(data);
     } catch (error) {
-      {console.error(FETCH_PROJECT, error);} // error config
+      {console.error(FETCH_PROJECT, error)} // error config
+      console.log(`Fetching from: ${PROJECT_PATH}`);
+      
     }
   };
 
   const handleAddProject = async (project) => {
     try {
-      const response = await fetch(`${PROJECT_PATH}`, { // apiurl config
+      const response = await fetch(PROJECT_PATH, { // apiurl config
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(project),

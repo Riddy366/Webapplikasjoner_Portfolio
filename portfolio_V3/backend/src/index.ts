@@ -38,7 +38,7 @@ app.post("/projects", async (c) => {
     const newProject = await c.req.json();
     const parsedData = JSON.parse(await readFile(projectsFilePath, "utf-8"));
     
-    newProject.Id = parsedData.length + 1;
+    newProject.id = parsedData.length + 1;
     parsedData.push(newProject);
     await writeFile(projectsFilePath, JSON.stringify(parsedData, null, 2));
 

@@ -100,6 +100,7 @@ footer {
     border-radius: 8px;
     box-shadow: 0 4px 20px var(--card-shadow);
     max-width: 100%; /* Fyll hele kolonnen */
+    /* width: 500px; */
     
     label {
         color: var(--text-color);

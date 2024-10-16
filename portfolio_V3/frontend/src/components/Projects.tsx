@@ -5,6 +5,7 @@ interface Project {
   description: string;
   createdAt: string;
   category: string;
+  projectStatus: string;
 }
 
 interface ProjectsProps {

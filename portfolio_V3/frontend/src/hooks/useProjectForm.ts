@@ -7,6 +7,7 @@ const useProjectForm = () => {
   const [description, setDescription] = useState("");
   const [createdAt, setCreatedAt] = useState("");
   const [category, setCategory] = useState("");
+  const [selectedOption, setSelectedOption] = useState("---");
 
   const submitProject = (onAddProject: (project: any) => void) => {
     return (e: React.FormEvent) => {
@@ -18,13 +19,14 @@ const useProjectForm = () => {
         return;
       }
       // Om feltene er fylt så legger den til prosjektet
-      onAddProject({ title, description, createdAt, category });
+      onAddProject({ title, description, createdAt, category, status });
 
       // Reset form
       setTitle("");
       setDescription("");
       setCreatedAt("");
       setCategory("");
+      setSelectedOption("---")
     };
   };
 
@@ -38,6 +40,8 @@ const useProjectForm = () => {
     category,
     setCategory,
     submitProject,
+    selectedOption,
+    setSelectedOption
   };
 };
 export default useProjectForm;

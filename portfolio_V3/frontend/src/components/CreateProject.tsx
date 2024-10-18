@@ -85,13 +85,13 @@ const CreateProject: React.FC<CreateProjectProps> = ({ onAddProject }) => {
         onChange={(e) => setCategory(e.target.value)}
         placeholder="Category..."
       />
-      <label htmlFor="selectet-status">Status:</label>
+      <label htmlFor="selected-status">Status:</label>
       <select
         id="selected-status"
-        value={selectedOption} // Binder valget til selectedOption
+        value={selectedOption}
         onChange={(e) => setSelectedOption(e.target.value)}
       >
-        <option value="---">---</option>
+        <option value="---">Project status</option>
         <option value="Yes">Yes</option>
         <option value="No">No</option>
       </select>

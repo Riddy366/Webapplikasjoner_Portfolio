@@ -7,14 +7,12 @@ const useProjectForm = () => {
   const [description, setDescription] = useState("");
   const [createdAt, setCreatedAt] = useState("");
   const [category, setCategory] = useState("");
-  const [selectedOption, setSelectedOption] = useState("---");
+  const [projectStatus, setProjectStatus] = useState("");
+ 
 
   const submitProject = (onAddProject: (project: any) => void) => {
     return (e: React.FormEvent) => {
       e.preventDefault();
-
-      // Standard status er "Yes" om brukeren ikke velger noe
-      const status = selectedOption === "---" ? "Yes" : selectedOption;
 
       // Sjekker om alle feltene er fylt
       if (!title || !description || !createdAt || !category) {
@@ -23,14 +21,14 @@ const useProjectForm = () => {
       }
 
       // Om feltene er fylt så legger den til prosjektet
-      onAddProject({ title, description, createdAt, category, status });
+      onAddProject({ title, description, createdAt, category, projectStatus });
 
       // Reset form
       setTitle("");
       setDescription("");
       setCreatedAt("");
       setCategory("");
-      setSelectedOption("---");
+      setProjectStatus("");
     };
   };
 
@@ -44,8 +42,8 @@ const useProjectForm = () => {
     category,
     setCategory,
     submitProject,
-    selectedOption,
-    setSelectedOption
+    projectStatus,
+    setProjectStatus
   };
 };
 export default useProjectForm;

@@ -23,8 +23,8 @@ const CreateProject: React.FC<CreateProjectProps> = ({ onAddProject }) => {
     category,
     setCategory,
     submitProject,
-    selectedOption, // selectedOption håndterer status
-    setSelectedOption,
+    projectStatus,
+    setProjectStatus
   } = useProjectForm(); // Bruker customHook
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -36,7 +36,6 @@ const CreateProject: React.FC<CreateProjectProps> = ({ onAddProject }) => {
       description,
       createdAt,
       category,
-      projectStatus: selectedOption
     };
 
     // Validerer med Zod
@@ -78,18 +77,21 @@ const CreateProject: React.FC<CreateProjectProps> = ({ onAddProject }) => {
         onChange={(e) => setCreatedAt(e.target.value)}
       />
       <label htmlFor="category">Category:</label>
-      <input
-        type="text"
+      <select
         id="category"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        placeholder="Category..."
-      />
+      >
+        <option value="Select a category">Select a category</option>
+        <option value="Design">Design</option>
+        <option value="Database">Database</option>
+      </select>
+
       <label htmlFor="selected-status">Status:</label>
       <select
         id="selected-status"
-        value={selectedOption}
-        onChange={(e) => setSelectedOption(e.target.value)}
+        value={projectStatus}
+        onChange={(e) => setProjectStatus(e.target.value)}
       >
         <option value="---">Project status</option>
         <option value="Yes">Yes</option>

@@ -1,6 +1,7 @@
 type ProjectProps = {
   title: string;
   description: string;
+  category: string,
   createdAt: string;
   projectStatus: string;
 };
@@ -8,6 +9,7 @@ type ProjectProps = {
 export default function Projecs({
   title,
   description,
+  category,
   createdAt,
   projectStatus
 }: ProjectProps) {
@@ -17,8 +19,9 @@ export default function Projecs({
       <div className="card">
         <h2>{title}</h2>
         <p>{description}</p>
+        <p>{category}</p>
         <small>{createdAt}</small>
-        <p>Public: {projectStatus}</p>
+        <p>{projectStatus}</p>
       </div>
     </>
   );
